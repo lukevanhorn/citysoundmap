@@ -48,19 +48,19 @@ Photos: <a href="http://www.citysoundmap.org/demo.html">http://www.citysoundmap.
 <p>
 <table>
 	<tr>
-		<td width="50%" style="border: none; padding: 0in">
-			<img SRC="http://www.citysoundmap.org/SoundMap_html_m385bb6d7.jpg" NAME="graphics1"></img>
+		<td style="border: none; padding: 0in">
+			<img SRC="http://www.citysoundmap.org/SoundMap_html_m385bb6d7.jpg"></img>
 		</td>		
-		<td width="50%" style="border: none; padding: 0in">
-			<img SRC="http://www.citysoundmap.org/SoundMap_html_m52855a9.jpg" NAME="graphics1"></img>
+		<td style="border: none; padding: 0in">
+			<img SRC="http://www.citysoundmap.org/SoundMap_html_m52855a9.jpg"></img>
 		</td>
 	</tr>
 	<tr>
-		<td width="50%" style="border: none; padding: 0in">
-			<img SRC="http://www.citysoundmap.org/SoundMap_html_m78939703.png" NAME="graphics1"></img>
+		<td style="border: none; padding: 0in">
+			<img SRC="http://www.citysoundmap.org/SoundMap_html_m78939703.png"></img>
 		</td>		
-		<td width="50%" style="border: none; padding: 0in">
-			<img SRC="http://www.citysoundmap.org/SoundMap_html_7278ea41.png" NAME="graphics1"></img>
+		<td style="border: none; padding: 0in">
+			<img SRC="http://www.citysoundmap.org/SoundMap_html_7278ea41.png"></img>
 		</td>
 	</tr>	
 </table>
