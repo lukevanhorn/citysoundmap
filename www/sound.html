@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px verdana;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+.line {
+  fill: none;
+  stroke: url(#temperature-gradient);
+  stroke-width: 1.5px;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus circle {
+  fill: none;
+  stroke: steelblue;
+}
+
+.focus circle_info {
+  fill: red;
+  stroke: steelblue;
+}
+
+</style>
+<body>
+<div style="position: absolute; top: 10px; left: 10px;">
+	<div style="float: left; margin-top: 10px; margin-right: 10px;"><input type="button" value="<--" onclick="d3.select('#sound_graph').remove(); today.setDate(today.getDate() - 1); load_data(); "/></div> 
+	<div style="float: left;" id="title"></div>
+	<div style="float: left; margin-top: 10px; margin-left: 10px;"><input type="button" value="-->" onclick="d3.select('#sound_graph').remove(); today.setDate(today.getDate() + 1); load_data(); "/></div>
+</div>
+<div id="graph" style="position: absolute; top: 50px; left: 10px;"></div>
+
+<script src="d3.min.js"></script>
+<script>
+
+window.onload = function() {
+	load_data();
+};
+
+var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+var months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+
+function format_date(obj) {
+  var ampm = obj.getHours() > 11 ? "PM" : "AM";
+  var hour = obj.getHours() > 12 ? obj.getHours() - 12 : obj.getHours();
+
+	return days[obj.getDay()] + " " + months[obj.getMonth()] + " " + obj.getDate().toString() + " " + obj.getFullYear() + " " + hour + ":" +  pad(obj.getMinutes().toString(), 2, '0',STR_PAD_LEFT) + ":" + pad(obj.getSeconds().toString(), 2, '0',STR_PAD_LEFT) + " " + ampm;
+}
+
+var STR_PAD_LEFT = 1;
+var STR_PAD_RIGHT = 2;
+var STR_PAD_BOTH = 3;
+
+function pad(str, len, pad, dir) {
+ 
+	if (typeof(len) == "undefined") { var len = 0; }
+	if (typeof(pad) == "undefined") { var pad = ' '; }
+	if (typeof(dir) == "undefined") { var dir = STR_PAD_RIGHT; }
+ 
+	if (len + 1 >= str.length) {
+ 
+		switch (dir){
+ 
+			case STR_PAD_LEFT:
+				str = Array(len + 1 - str.length).join(pad) + str;
+			break;
+ 
+			case STR_PAD_BOTH:
+				var right = Math.ceil((padlen = len - str.length) / 2);
+				var left = padlen - right;
+				str = Array(left+1).join(pad) + str + Array(right+1).join(pad);
+			break;
+ 
+			default:
+				str = str + Array(len + 1 - str.length).join(pad);
+			break;
+ 
+		} // switch
+ 
+	}
+ 
+	return str;
+ 
+}
+
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = window.innerWidth - margin.left - margin.right,
+    height = window.innerHeight - margin.top - margin.bottom;
+
+var parseDate = d3.time.format("%m-%d-%Y %H:%M:%S").parse,
+    bisectDate = d3.bisector(function(d) { return d.Time; }).left,
+    formatValue = d3.format(",.2f");
+
+var x = d3.time.scale()
+    .range([0, width]);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+	//.tickFormat(d3.time.format("%H"));
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var line = d3.svg.line()
+    .interpolate("cardinal")
+    .x(function(d) { return x(d.Time); })
+    .y(function(d) { return y(d.dBA); });
+	
+var svg;
+
+var today = new Date();
+
+
+function load_data() {
+
+  svg = d3.select("#graph").append("svg")
+	.attr("class", "graph")
+	.attr("id", "sound_graph")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	
+	var filename = "data/" + pad((today.getMonth() + 1).toString(), 2, '0',STR_PAD_LEFT) + pad(today.getDate().toString(), 2, '0',STR_PAD_LEFT) + today.getFullYear() + ".tsv"; 
+
+	title.innerHTML = "<h2>" + today.toDateString() + "</h2>";	
+	
+	d3.tsv(filename, function(error, data) {
+	  if(data == null) {
+		return;
+	  }
+	  
+	  data.forEach(function(d) {
+		d.Time = parseDate(d.Time);
+		d.dBA = +d.dBA;
+		d.info = d.info;
+	  });
+		
+	  x.domain(d3.extent(data, function(d) { return d.Time; }));
+	  //y.domain(d3.extent(data, function(d) { return d.dBA; }));
+	  y.domain([d3.min(data, function(d) { return d.dBA; }),100]);	
+
+	  svg.append("linearGradient")
+		  .attr("id", "temperature-gradient")
+		  .attr("gradientUnits", "userSpaceOnUse")
+		  .attr("x1", 0).attr("y1", y(45))
+		  .attr("x2", 0).attr("y2", y(75))
+		.selectAll("stop")
+		  .data([
+			{offset: "0%", color: "#1f77b4"},
+			{offset: "75%", color: "#ff7f0e"},
+			{offset: "100%", color: "#ff3300"}
+		  ])
+		.enter().append("stop")
+		  .attr("offset", function(d) { return d.offset; })
+		  .attr("stop-color", function(d) { return d.color; });
+
+	  /* draw x-axis */
+	  svg.append("g")
+		  .attr("class", "x axis")
+		  .attr("transform", "translate(0," + height + ")")
+		  .call(xAxis);
+		
+	  /* draw y-axis */
+	  svg.append("g")
+		  .attr("class", "y axis")
+		  .call(yAxis)
+		.append("text")
+		  .attr("transform", "rotate(-90)")
+		  .attr("y", 6)
+		  .attr("dy", ".71em")
+		  .style("text-anchor", "end")
+		  .text("dB(A)");
+
+	  /* draw line */	  
+	  svg.append("path")
+		  .datum(data)
+		  .attr("class", "line")
+		  .attr("d", line);
+		  
+	});
+
+}
+
+</script>
