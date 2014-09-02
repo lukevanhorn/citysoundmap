@@ -46,30 +46,24 @@ Demo: <a href="http://www.citysoundmap.org/demo.html">http://www.citysoundmap.or
 Photos: <a href="http://www.citysoundmap.org/demo.html">http://www.citysoundmap.org</a>
 </p>
 <p>
-<TABLE WIDTH=623 CELLPADDING=7 CELLSPACING=0>
-	<COL WIDTH=298>
-	<COL WIDTH=297>
-	<TR VALIGN=TOP>
-		<TD WIDTH=298 STYLE="border: none; padding: 0in">
-			<P><IMG SRC="http://www.citysoundmap.org/SoundMap_html_m385bb6d7.jpg" NAME="graphics2" ALIGN=LEFT WIDTH=456 HEIGHT=262 BORDER=0><BR CLEAR=LEFT><BR>
-			</P>
-		</TD>
-		<TD WIDTH=297 STYLE="border: none; padding: 0in">
-			<P><IMG SRC="http://www.citysoundmap.org/SoundMap_html_m52855a9.jpg" NAME="graphics1" ALIGN=LEFT WIDTH=467 HEIGHT=262 BORDER=0><BR CLEAR=LEFT><BR>
-			</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=298 STYLE="border: none; padding: 0in">
-			<P><IMG SRC="http://www.citysoundmap.org/SoundMap_html_m78939703.png" NAME="graphics3" ALIGN=LEFT WIDTH=438 HEIGHT=250 BORDER=0><BR CLEAR=LEFT><BR>
-			</P>
-		</TD>
-		<TD WIDTH=297 STYLE="border: none; padding: 0in">
-			<P><IMG SRC="http://www.citysoundmap.org/SoundMap_html_7278ea41.png" NAME="graphics4" ALIGN=LEFT WIDTH=446 HEIGHT=269 BORDER=0><BR CLEAR=LEFT><BR>
-			</P>
-		</TD>
-	</TR>
-</TABLE>
+<table>
+	<tr>
+		<td width="50%" style="border: none; padding: 0in">
+			<img SRC="http://www.citysoundmap.org/SoundMap_html_m385bb6d7.jpg" NAME="graphics1"></img>
+		</td>		
+		<td width="50%" style="border: none; padding: 0in">
+			<img SRC="http://www.citysoundmap.org/SoundMap_html_m52855a9.jpg" NAME="graphics1"></img>
+		</td>
+	</tr>
+	<tr>
+		<td width="50%" style="border: none; padding: 0in">
+			<img SRC="http://www.citysoundmap.org/SoundMap_html_m78939703.png" NAME="graphics1"></img>
+		</td>		
+		<td width="50%" style="border: none; padding: 0in">
+			<img SRC="http://www.citysoundmap.org/SoundMap_html_7278ea41.png" NAME="graphics1"></img>
+		</td>
+	</tr>	
+</table>
 </p>
 </body>
 </html>
