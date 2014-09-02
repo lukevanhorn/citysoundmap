@@ -26,19 +26,19 @@ The serial protocol has been reverse engineered and is available here:<br />
 http://sigrok.org/wiki/Tondaj_SL-814
 </p>
 <p>
-The sound meter is polled continually, but only records data above the set threshold 70 dB(A) 
-<br/>
-If using the Camera Module, a photo or short video is also captured.
-<br/>
-The Raspberry Pi can also host a simple web interface to view the data.  Install apache or webserver of choice.  
-<br/>
-**note: The Pi user will need write permissions for the data, video and img directories in /var/www
-</p>
-<p>
 <h4>Initialize</h4> 
 <p><pre>serialport.write('\x10\x04\x0d')</pre></p>
 <h4>Poll</h4> 
 <p><pre>serialport.write('\x30\x00\x0d')</pre></p>
+</p>
+<p>
+The sound meter is polled continually, but only records data above the set threshold 70 dB(A) 
+<br/><br/>
+If using the Camera Module, a photo or short video is also captured.
+<br/><br/>
+The Raspberry Pi can also host a simple web interface to view the data.  Install apache or webserver of choice.  
+<br/><br/>
+**note: The Pi user will need write permissions for the data, video and img directories in /var/www
 </p>
 </body>
 </html>
