@@ -34,13 +34,11 @@ The Raspberry Pi can also host a simple web interface to view the data.  Install
 <br/>
 **note: The Pi user will need write permissions for the data, video and img directories in /var/www
 </p>
-<h4>Python</h4> 
-<p><pre style="background-color:#eee">
-#init
-serialport.write('\x10\x04\x0d')
-
-#poll
-serialport.write('\x30\x00\x0d')
-</p></pre>
+<p>
+<h4>Initialize</h4> 
+<p><pre>serialport.write('\x10\x04\x0d')</pre></p>
+<h4>Poll</h4> 
+<p><pre>serialport.write('\x30\x00\x0d')</pre></p>
+</p>
 </body>
 </html>
