@@ -1,8 +1,3 @@
-citysoundmap
-============
-
-Sound Data Logger using the Raspberry Pi and a digital sound sensor
-
 <html>
     <body>
         <h2>City Sound Map</h2>
