@@ -17,8 +17,9 @@ Sound Data Logger using the Raspberry Pi, digital sound sensor and Camera Module
 </p>
 <p>
 This project uses a modified Tonda SL-814 digital sound meter weighted for pressure level A.  The modifcations allow the meter to be powered from raspberry pi and remain in an always on state for continual polling. 
+<br/><br/>
 I purchased <a href="http://www.amazon.com/NEEWER%C2%AE-Digital-Sound-Level-Meter/dp/B005JX2EZ2">this model</a>   
-<br/>
+<br/><br/>
 Though, I recommend <a href="http://www.amazon.com/Professional-Digital-Pressure-Measurement-Detectors/dp/B00LL3Y074">this one</a> as it comes with the special cable(non-standard USB), otherwise you'll have to modify a micro-usb cable.
 </p>
 <p>
