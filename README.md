@@ -19,22 +19,20 @@
 			This project uses a modified Tonda SL-814 digital sound meter weighted for pressure level A.  The modifcations allow the meter to be powered from raspberry pi and remain in an always on state for continual polling. 
 			I purchased <a href="http://www.amazon.com/NEEWER%C2%AE-Digital-Sound-Level-Meter/dp/B005JX2EZ2">this model</a>   
 			<br/>
-			Though, I recommend <a href="http://www.amazon.com/Professional-Digital-Pressure-Measurement-Detectors/dp/B00LL3Y074">this one</a> as it comes with the special cable(non-standard USB), othwise you'll have to modify a micro-usb cable.
+			Though, I recommend <a href="http://www.amazon.com/Professional-Digital-Pressure-Measurement-Detectors/dp/B00LL3Y074">this one</a> as it comes with the special cable(non-standard USB), otherwise you'll have to modify a micro-usb cable.
 		</p>
 		<p>
-			The serial protocol has been reverse engineered and is available here:
+			The serial protocol has been reverse engineered and is available here:<br />
 			http://sigrok.org/wiki/Tondaj_SL-814
 		</p>
-		<p>
-			<h4>Python</h4> 
-			<pre style="background-color:#eee">
+		<h4>Python</h4> 
+		<p><pre style="background-color:#eee">
 				#init
 				serialport.write('\x10\x04\x0d')
 
 				#poll
 				serialport.write('\x30\x00\x0d')
-			</pre>
-		</p>
+			</pre></p>
 		<p>
 			The sound meter is polled continually, but only records data above the set threshold 70 dB(A) 
 			<br/>
