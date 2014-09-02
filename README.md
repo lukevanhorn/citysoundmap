@@ -2,7 +2,7 @@
 <body>
 <h2>City Sound Map</h2>
 <p>
-Sound Data Logger using the Raspberry Pi and a hacked digital sound meter and Pi Camera Module 
+Sound Data Logger using the Raspberry Pi, digital sound sensor and Camera Module 
 <br/>
 <h4>Equipment</h4>
 <br/>
