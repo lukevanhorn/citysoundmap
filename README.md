@@ -32,7 +32,7 @@
 
 				#poll
 				serialport.write('\x30\x00\x0d')
-			</pre></p>
+			</p></pre>
 		<p>
 			The sound meter is polled continually, but only records data above the set threshold 70 dB(A) 
 			<br/>
