@@ -2,7 +2,13 @@
 layout: default
 title: City Sound Map
 ---
-
+  <h1>Blog Posts</h1>
+  <ul class="posts">
+	{% for post in site.posts %}
+	  <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+	{% endfor %}
+  </ul>	
+		  
 <p>City Sound Map</p>
 
 <p>Sound Data Logger using the Raspberry Pi, digital sound sensor and Camera Module </p>
