@@ -185,12 +185,11 @@ table {
   position: relative;
   width: 80%;
   margin: 0 auto;
-  padding-top: 50px;
 }
 
 #content-wrapper {
   border-top: solid 1px #fff;
-  padding-top: 30px;
+  padding-top: 60px;
 }
 
 #main-content {
