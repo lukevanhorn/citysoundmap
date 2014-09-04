@@ -2,29 +2,40 @@
 <html>
   <head>
     <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width" initial-scale="1">	
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/stylesheets/pygment_trac.css" media="screen">
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/stylesheets/print.css" media="print">
-
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/stylesheets/font.css" media="screen">	
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/stylesheets/visitor.css" media="screen">	
+    <!--bootstrap-->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+		
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <title>City Sound Map</title>
+	
+    <!--bootstrap-->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-    <header>
-      <div class="inner">
-        <h1>Citysoundmap</h1>
-        <h2>Sound data logger using the Raspberry Pi</h2>
-        <a href="https://github.com/lukevanhorn/citysoundmap" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
-
+    <nav role="navigation" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header"><a href="/" class="logo"><span class="logo-first">city sound map</span><span class="logo-middle"></span><span class="logo-last"><span class="glyphicon glyphicon-map-marker"></span></span></a>
+            </div>
+            <ul class="nav navbar-nav navbar-right hidden-xs">
+                <li class="active"><a href="/">project</a></li>
+                <li><a href="{{ site.baseurl }}/blog.html">blog</a></li>
+            </ul>
+        </div>
+    </nav>  
+ 
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">

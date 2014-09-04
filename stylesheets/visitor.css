@@ -1,0 +1,364 @@
+﻿@import url("//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600");
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+body {
+  overflow-x: hidden;
+  height: 100%;    
+  font-family: 'Open Sans', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font: 400 14px/1.6 "Open Sans", sans-serif;
+  color: #666;
+}
+h1,
+h2,
+h3 {
+  margin: 5px 0;
+  font-weight: normal;
+  color: #353535;
+  -webkit-font-smoothing: antialiased;
+}
+#content-wrapper {
+  height: 100%;
+  padding: 0;
+}
+
+/*
+#content {
+  margin-right: auto;
+  margin-left: auto;
+  width: 96%;
+  height: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*/
+
+p em {
+  font-weight: bold;
+  font-style: normal;
+  color: #353535;
+}
+
+strong {
+  color: #353535;
+}
+
+nav a {
+  font-size: 12px;
+  color: #7B838A;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus
+{
+    background-color: transparent;
+    color: #333;
+    font-weight: bold;
+}
+
+/*
+.navbar-header #logo {
+  position: fixed;
+  top: 0;
+  margin: 0;
+  padding: 10px 25px;
+  width: auto;
+  border-left: none;
+}
+*/
+
+nav {
+    -webkit-font-smoothing: antialiased;
+    padding-top: 5px;
+}
+
+nav a.logo {
+    padding-top: 0px;
+    font-size: 25px;
+    font-weight: 100;    
+}
+
+nav button {
+    margin-right: 10px;
+}
+
+
+span.logo-first {
+  color: #FF9C00;
+}
+span.logo-middle {
+  color: #CCC;
+}
+span.logo-last {
+  color: #7BB31A;
+}
+
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  background-color: transparent;
+  color: #333;
+  font-weight: bold;
+}
+
+
+/* links */
+a {
+  color: #259dff;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+:target {
+  padding-top: 100px;
+}
+
+
+/* logo */
+#logo {
+  margin-top: 180px;
+  margin-bottom: 180px;
+  margin-left: 80px;
+  padding-left: 40px;
+  -webkit-font-smoothing: antialiased;
+}
+#logo .logo {
+  display: block;
+  font-size: 80px;
+  font-weight: 100;
+  width: 100%;
+}
+#logo .description {
+  text-align: right;
+  position: relative;
+  top: -5px;
+  font: 100 36px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #cecece;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+#logo em {
+  font-style: normal;
+  font-weight: 100;
+  font-size: 30px;
+  color: #999;
+  margin-left: 5px;
+}
+#logo a {
+  color: #cecece;
+}
+#logo a:hover {
+  text-decoration: none;
+  color: #858585;
+}
+/* login
+----------------------------------------------------------*/
+#login {
+  display: block;
+  font-size: .85em;
+  margin: 20px 0 12px;
+  text-align: right;
+}
+#login a {
+  background-color: #d3dce0;
+  margin-left: 10px;
+  margin-right: 3px;
+  padding: 2px 3px;
+  text-decoration: none;
+}
+#login a.username {
+  background: none;
+  margin-left: 0px;
+  text-decoration: underline;
+}
+#login ul {
+  margin: 0;
+}
+#login li {
+  display: inline;
+  list-style: none;
+}
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 18px;
+  border-radius: 50%;
+}
+.btn-black {
+  color: #FFF;
+  background-color: #222;
+  border-color: #adadad;
+}
+.btn-black:hover {
+  color: #FFF;
+  background-color: lightblue;
+}
+/* login page */
+#loginForm {
+  border-left: 1px dotted #eee;
+  margin-top: 180px;
+  margin-left: 80px;
+  padding-left: 40px;
+}
+#registerForm {
+  border-left: 1px dotted #eee;
+  margin-top: 180px;
+  margin-left: 80px;
+  padding-left: 40px;
+}
+#loginForm .validation-error {
+  display: block;
+  margin-left: 15px;
+}
+#socialLoginForm {
+  margin-left: 80px;
+  padding-left: 40px;
+}
+/* forms */
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+fieldset legend {
+  display: none;
+}
+fieldset ol {
+  padding: 0;
+  list-style: none;
+}
+fieldset ol li {
+  padding-bottom: 5px;
+}
+fieldset label {
+  display: block;
+}
+fieldset label.checkbox {
+  display: inline;
+}
+fieldset input[type="text"],
+fieldset input[type="password"] {
+  border: 1px solid #e2e2e2;
+  color: #333;
+  font-size: 1.2em;
+  margin: 5px 0 6px 0;
+  padding: 5px;
+  width: 100%;
+}
+fieldset input[type="text"]:focus,
+fieldset input[type="password"]:focus {
+  border: 1px solid #8cc84b;
+}
+/* ajax login/registration dialog */
+.modal-popup {
+  font-size: 0.7em;
+}
+.modal-popup input[type="text"],
+.modal-popup input[type="password"] {
+  width: 90%;
+}
+/* info and errors */
+.message-info {
+  border: 1px solid;
+  clear: both;
+  padding: 10px 20px;
+}
+.message-error {
+  clear: both;
+  color: #e80c4d;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+}
+.message-success {
+  color: #7ac0da;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+}
+.error {
+  color: #e80c4d;
+}
+/* styles for validation helpers */
+.field-validation-error {
+  color: #e80c4d;
+  font-weight: bold;
+}
+.field-validation-valid {
+  display: none;
+}
+input[type="text"].input-validation-error,
+input[type="password"].input-validation-error {
+  border: 1px solid #e80c4d;
+}
+.validation-summary-errors {
+  color: #e80c4d;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.validation-summary-valid {
+  display: none;
+}
+ul#social li {
+  padding-left: 40px;
+  margin-left: 80px;
+  display: inline;
+  list-style: none;
+}
+.guide {
+  min-height: 20px;
+  font-size: 1.2em;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #e3e3e3;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.guide h1 {
+  font-size: 40px;
+  color: #666;
+  /*color: #3276b1;*/
+}
+div.vertical-left {
+  border-left: 1px solid #CCC;
+}
+.horizontal-top {
+  background: url(/images/hr.png) top center no-repeat;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+}
+.horizontal-bottom {
+  background: url(/images/hr.png) bottom center no-repeat;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+.vertical-gap {
+  margin-top: 20px;
+  padding-top: 20px;
+}
+input[type="text"],
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+input.btn-combo {
+  vertical-align: middle;
+  height: 32px;
+  line-height: normal;
+}
+.panel-heading {
+  padding: 5px;
+}
