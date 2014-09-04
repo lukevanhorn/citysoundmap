@@ -1,2 +1,9 @@
 baseurl: /citysoundmap
 pygments: true
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "default"
