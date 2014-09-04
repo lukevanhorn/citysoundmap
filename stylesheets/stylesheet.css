@@ -189,12 +189,13 @@ table {
 
 #content-wrapper {
   border-top: solid 1px #fff;
-  padding-top: 60px;
+  padding-top: 50px;
 }
 
 #main-content {
   width: 60%;
   float: left;
+  padding-top: 20px;
 }
 
 #main-content img {
