@@ -2,16 +2,11 @@
 layout: default
 title: City Sound Map
 ---
-    <h1>Latest Post</h1>
-    <div class="posts">
-	{% for post in site.posts limit:1 %}
+  <div class="posts">
+	{% for post in site.posts %}
+	  <p><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></p>
         <p>
             {{ post.content }}
         </p>
 	{% endfor %}
-    <h1>Recent Posts</h1>
-    {% for post in site.posts offset:1 limit:2 %}
-	    <p><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></p>
-    {% endfor %}
-    </div>	
-		  
+  </div>	
