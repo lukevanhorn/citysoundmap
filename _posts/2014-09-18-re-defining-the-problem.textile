@@ -1,0 +1,12 @@
+---
+layout: default
+title: Re...Defining the Problem
+---
+
+h1. {{ page.title }}
+
+p(meta). 18 Sept 2014 - Luke Van Horn, Cambridge, MA
+
+After a few revisions, and much patience from Alan and Beth, we now have a solid problem statement. While the scope has narrowed significantly, it seems that my initial thinking about the technologies involved will probably continue to play a roll. Though, I can't say that for certain. 
+
+This exercise has certainly helped me re-frame new problems I encounter.  I'm still amazed by the how much of the narrative in our heads we assume is making it into a document or our story, when often it isn't. 
