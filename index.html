@@ -2,67 +2,12 @@
 layout: default
 title: City Sound Map
 ---
-  <h1>Blog Posts</h1>
-  <ul class="posts">
+  <div class="posts">
 	{% for post in site.posts %}
-	  <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+	  <p><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></p>
+        <p>
+            {{ post.content }}
+        </p>
 	{% endfor %}
-  </ul>	
+  </div>	
 		  
-<p>City Sound Map</p>
-
-<p>Sound Data Logger using the Raspberry Pi, digital sound sensor and Camera Module </p>
-
-<h3>
-<a name="parts" class="anchor" href="#parts"><span class="octicon octicon-link"></span></a>Parts</h3>
-
-<ul>
-<li>
-<a href="http://www.amazon.com/Professional-Digital-Pressure-Measurement-Detectors/dp/B00LL3Y074">Digital sound meter</a> - (Tonda SL-814)</li>
-<li><a href="http://www.adafruit.com/products/1914">Raspberry Pi</a></li>
-<li><a href="http://www.adafruit.com/products/1367">Pi Camera Module</a></li>
-</ul><h3>
-<a name="softwarescripts" class="anchor" href="#softwarescripts"><span class="octicon octicon-link"></span></a>Software/Scripts</h3>
-
-<ul>
-<li>Python script to record sound levels and image or video clips</li>
-<li>Apache</li>
-<li>d3.js</li>
-</ul><hr><p>This project uses a modified Tonda SL-814 digital sound meter weighted for pressure level A. The modifcations allow the meter to be powered from raspberry pi and remain in an always on state for continual polling.  </p>
-
-<p>I purchased <a href="http://www.amazon.com/NEEWER%C2%AE-Digital-Sound-Level-Meter/dp/B005JX2EZ2">this model</a> </p>
-
-<p>Though, I recommend <a href="http://www.amazon.com/Professional-Digital-Pressure-Measurement-Detectors/dp/B00LL3Y074">this one</a> as it comes with the special cable(non-standard USB), otherwise you'll have to modify a micro-usb cable.</p>
-
-<p>The serial protocol has been reverse engineered and is available here:
-<a href="http://sigrok.org/wiki/Tondaj_SL-814">http://sigrok.org/wiki/Tondaj_SL-814</a></p>
-
-<h3>
-<a name="initialize" class="anchor" href="#initialize"><span class="octicon octicon-link"></span></a>Initialize</h3>
-
-<pre>serialport.write('\x10\x04\x0d')</pre>
-
-<h3>
-<a name="poll" class="anchor" href="#poll"><span class="octicon octicon-link"></span></a>Poll</h3>
-
-<pre>serialport.write('\x30\x00\x0d')</pre>
-
-<p>The sound meter is polled continually, but only records data above the set threshold 70 dB(A) </p>
-
-<p>If using the Camera Module, a photo or short video is also captured. </p>
-
-<p>The Raspberry Pi hosts a simple web interface to view the data. Install apache or webserver of choice.  (future releases will use node.js for polling and webserver).</p>
-
-<p>**note: The Pi user will need write permissions for the data, video and img directories in /var/www </p>
-
-<p>Demo: <a href="http://www.citysoundmap.org/demo.html">http://www.citysoundmap.org/demo.html</a> (data collected in Moab, UT August 2013). </p>
-
-<p>Photos: <a href="http://www.citysoundmap.org">http://www.citysoundmap.org</a></p>
-
-<p><img src="http://citysoundmap.org/SoundMap_html_m385bb6d7.jpg" alt="building the device"></p>
-
-<p><img src="http://citysoundmap.org/SoundMap_html_m52855a9.jpg" alt="completed case"></p>
-
-<p><img src="http://citysoundmap.org/SoundMap_html_m78939703.png" alt="data"></p>
-
-<p><img src="http://citysoundmap.org/SoundMap_html_7278ea41.png" alt="data and video"></p>
