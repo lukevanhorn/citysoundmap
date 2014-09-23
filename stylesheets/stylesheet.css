@@ -43,6 +43,12 @@ h3 {
 }
 */
 
+.logo-icon {
+    -ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: rotate(-90deg);
+}
+
 .avatar {
     width: 40px;
     height: 40px;
