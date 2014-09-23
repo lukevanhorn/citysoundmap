@@ -5,7 +5,7 @@ title: Defining the problem
 
 h1. {{ page.title }}
 
-p(meta). 9 Sept 2014 - Cambridge, MA
+p(meta). 9 Sept 2014 - Luke Van Horn, Cambridge, MA
 
 
 Wow, this is going to be a challenge...  I'm tend towards problem solving, not problem defining.  
