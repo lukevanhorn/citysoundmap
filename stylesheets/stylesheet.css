@@ -43,6 +43,12 @@ h3 {
 }
 */
 
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
 p em {
   font-weight: bold;
   font-style: normal;
