@@ -1,0 +1,17 @@
+---
+layout: default
+title: CityNoise
+---
+
+h1. {{ page.title }}
+
+p(meta). 21 Oct 2014 - Luke Van Horn, Cambridge, MA
+
+A fellow GovLab classmate, Chris Piotrowski, informed me of the "CityNoise project":http://research.microsoft.com/en-us/projects/citynoise/.  He heard about it while listening to 
+"Ben Walker's Theory of Everything":http://toe.prx.org/2014/10/enchanted-by-numbers/
+
+CityNoise is a Microsoft Research project that uses 311 complaint data together with road network data, points of interests, and social media to create noise pollution maps of NYC.
+
+While researching 311 data, I found that "Boston makes this data publicly searchable":https://data.cityofboston.gov/City-Services/Mayor-s-Hotline-Noise-Issues/femx-dtc6 (even with map overlay).  Unfortunately, Cambridge isn't included in this dataset (I'll look in this further).
+
+

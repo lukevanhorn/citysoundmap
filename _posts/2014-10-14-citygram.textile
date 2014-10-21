@@ -5,7 +5,7 @@ title: Spatial Acoustic Cartography
 
 h1. {{ page.title }}
 
-p(meta). 21 Oct 2014 - Luke Van Horn, Cambridge, MA
+p(meta). 14 Oct 2014 - Luke Van Horn, Cambridge, MA
 
 I was recently introduced to Dr. Tae Hong Park, an Associate Professor, Composition & Music Technology at NYU.  
 
