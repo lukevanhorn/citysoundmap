@@ -9,8 +9,8 @@ p(meta). 21 Oct 2014 - Luke Van Horn, Cambridge, MA
 
 I was recently introduced to Dr. Tae Hong Park, an Associate Professor, Composition & Music Technology at NYU.  
 
-Dr.Park is leading the Citygram project which _aims to deliver a real-time visualization/mapping system focusing on non-ocular energies through scale-accurate, non-intrusive, and data-driven interactive digital maps_.
+Dr.Park is leading the Citygram project which __aims to deliver a real-time visualization/mapping system focusing on non-ocular energies through scale-accurate, non-intrusive, and data-driven interactive digital maps.__
 
-The [real-time heatmap](http://citygram.smusic.nyu.edu/viz/) overlay for google maps is fantastic!  I'm exicted to explore the possibilities of collaborating with Dr. Park and the Citygram project team. 
+The "real-time heatmap":http://citygram.smusic.nyu.edu/viz/ overlay for google maps is fantastic!  I'm exicted to explore the possibilities of collaborating with Dr. Park and the Citygram project team. 
 
-Recent paper on [Locative Sonification/Citygram](http://citygram.calarts.edu/citygram/citygram-icmc-2013.pdf)
+Recent paper on "Locative Sonification/Citygram":http://citygram.calarts.edu/citygram/citygram-icmc-2013.pdf
