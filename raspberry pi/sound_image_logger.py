@@ -44,7 +44,12 @@ def InitDevice( ):
 def WriteData( val_str ):
     global recording_id
     
-    filename = strftime("/var/www/data/%m%d%Y.tsv", time.localtime())
+    dirpath = strftime("/var/www/data/%m%d%Y", time.localtime())
+
+    if(os.path.exists(dirpath) == False):
+      os.makedirs(dirpath)
+
+    filename = strftime("/var/www/data/%m%d%Y/data.tsv", time.localtime())
     if(os.path.exists(filename) == False):
       with open(filename, 'a+') as f:
         f.write("Time\tdBA\tinfo\n")
@@ -57,7 +62,7 @@ def WriteData( val_str ):
     
     
     
-def CaptureVideo():
+def CaptureImage():
   global last_recording
   global recording_id
   
@@ -65,10 +70,10 @@ def CaptureVideo():
     return
     
   recording_id = str(int(time.time()))
-  call("sudo raspistill -t 100 -q 75 -w 1024 -h 768 -o /var/www/img/" + recording_id + ".jpg -n", shell=True)
+  call("sudo raspistill -t 5000 -tl 1000 -q 75 -w 640 -h 480 -o /var/www/img/" + recording_id + "_%d.jpg -n", shell=True)
   last_recording = datetime.now()
 
-  filename = strftime("/var/www/%m%d%Y_image.tsv", time.localtime())
+  filename = strftime("/var/www/data/%m%d%Y/image.tsv", time.localtime())
   
   if(os.path.exists(filename) == False):
     with open(filename, 'a+') as f:
@@ -130,8 +135,8 @@ while 1:
     recording_id = ""
   
   if((float(val) / running_mean) > 1.25):
-    if(val > 700):
-      CaptureVideo()
+    if(val > 800):
+      CaptureImage()
 
   sys.stdout.write(str(val) + " dB CH: " + str(float(val) / previous_val) + " RM: " + str(float(val) / running_mean) + "\r")
   sys.stdout.flush()
