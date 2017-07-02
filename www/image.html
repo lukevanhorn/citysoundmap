@@ -137,9 +137,11 @@ var line = d3.svg.line()
 var svg;
 
 var today = new Date();
-var dirpath = "data/" + pad((today.getMonth() + 1).toString(), 2, '0',STR_PAD_LEFT) + pad(today.getDate().toString(), 2, '0',STR_PAD_LEFT) + today.getFullYear();
+var dirpath;
 
 function load_data() {
+	
+	dirpath = "data/" + pad((today.getMonth() + 1).toString(), 2, '0',STR_PAD_LEFT) + pad(today.getDate().toString(), 2, '0',STR_PAD_LEFT) + today.getFullYear();
 
   svg = d3.select("#graph").append("svg")
 	.attr("class", "graph")
@@ -251,7 +253,6 @@ function add_marker(d) {
 		});
 }
 
-
-
-
 </script>
+</body>
+</html>
