@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+<script type="javascript" src="util.js"></script>
+
+<script>
+
+  window.onload = function() {
+
+
+   Web.get("citysoundmap.org/data.json",null, function(vdata) {
+       alert(vdata);
+       vdata.each(vdata, function(f) {
+          var newRow = "<tr>" + "<td>" + f.time + "</td>" +
+           "<td>" + f.value + "</td>" + "<td><img src='" + f.image + "' /></td>" + "</tr>"
+           vTable.insert(newRow);});}
+		,function(error){ alert(error);})
+
+
+}
+</script>
+
+</head>
+<body><h1>Sound Violations</h1>
+<div id="violations">
+   <table id="violation_table" border="2">
+  <thead>
+            <th>Time</th>
+            <th>Noise Level (dB)</th>
+            <th></th>
+        </thead>
+      <tbody id="vTable">
+
+       </tbody>
+   </table>
+</div>
+</body></html>
