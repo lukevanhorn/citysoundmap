@@ -19,6 +19,7 @@ samples = 0
 last_recording = datetime.now()
 last_sample = datetime.now()
 recording_id = ""
+max_val = 0
 
 
 def ByteToHex( byteStr ):
