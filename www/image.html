@@ -144,8 +144,8 @@ function load_data() {
   svg = d3.select("#graph").append("svg")
 	.attr("class", "graph")
 	.attr("id", "sound_graph")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("width", width)
+    .attr("height", height)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 	
@@ -166,7 +166,7 @@ function load_data() {
 		
 	  x.domain(d3.extent(data, function(d) { return d.Time; }));
 	  //y.domain(d3.extent(data, function(d) { return d.dBA; }));
-	  y.domain([d3.min(data, function(d) { return d.dBA; }),100]);	
+	  y.domain([d3.min(data, function(d) { return d.dBA; }),d3.max(data, function(d) { return d.dBA; })]);	
 
 	  svg.append("linearGradient")
 		  .attr("id", "temperature-gradient")
@@ -244,7 +244,7 @@ function add_marker(d) {
 			if(d.info != "") {
 			    desc.innerHTML = d.dBA + " dB(A) <br />" + format_date(d.Time);
 				image_wrapper.style.visibility = 'visible';
-				photo.src = dirpath + "/img/" + d.info + "_1.jpg";
+				photo.src = dirpath + "/" + d.info + "_1.jpg";
 			}
 			event.returnValue= false;
 			return false;
