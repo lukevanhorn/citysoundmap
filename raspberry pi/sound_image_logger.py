@@ -49,6 +49,12 @@ def WriteData( val ):
     last_sample = datetime.now()
     recording_id = str(int(time.time()))
 
+    localtime = time.localtime()
+
+    dirpath = strftime("/var/www/data/%m%d%Y", localtime)
+    if(os.path.exists(dirpath) == False):
+      os.makedirs(dirpath)
+
     tmp_str = '%d' % val
     val_str = tmp_str[:-1] + '.' + tmp_str[-1:]  
     
@@ -56,20 +62,16 @@ def WriteData( val ):
 
     if(val > 800):
       cap_str = recording_id
-      CaptureImage()
+      CaptureImage(dirpath)
 
-    dirpath = strftime("/var/www/data/%m%d%Y", time.localtime())
 
-    if(os.path.exists(dirpath) == False):
-      os.makedirs(dirpath)
-
-    filename = strftime("/var/www/data/%m%d%Y/data.tsv", time.localtime())
+    filename = strftime(dirpath + "/data.tsv")
     if(os.path.exists(filename) == False):
       with open(filename, 'a+') as f:
         f.write("Time\tdBA\tinfo\n")
 
     with open(filename, 'a+') as f:
-      timestamp = strftime("%m-%d-%Y %H:%M:%S", time.localtime())
+      timestamp = strftime("%m-%d-%Y %H:%M:%S", localtime)
       f.write(timestamp + "\t" + val_str + "\t" + cap_str + "\n")
 
 
@@ -77,14 +79,14 @@ def WriteData( val ):
     
     
     
-def CaptureImage():
+def CaptureImage(dirpath):
   global last_recording
   global recording_id
   
   if((datetime.now() - last_recording) < timedelta(seconds=5)):
     return
     
-  call("sudo raspistill -t 5000 -tl 1000 -q 75 -w 640 -h 480 -o /var/www/img/" + recording_id + "_%d.jpg -n", shell=True)
+  call("sudo raspistill -t 5000 -tl 1000 -q 75 -w 640 -h 480 -o " dirpath + "/img/" + recording_id + "_%d.jpg -n", shell=True)
   last_recording = datetime.now()
   
   return
