@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+<script type="text/javascript" src="util.js"></script>
+
+<script>
+
+  window.onload = function() {
+
+
+   Web.get("data.json",null, function(vdata) {
+     lines = vdata.split("\n");
+     lines.pop(); 
+
+     for(var i = 0; i < lines.length; i++) {
+        var f = eval('('+lines[i]+')');
+        var newRow = "<div style='clear: both;'>" + "<div style='float: left;'><h2>" + f.time + "</h2>" +
+          "<h2>" + f.value + "</h2></div>" + "<div><img onclick='javascript: window.open(\"" + f.image + "\", \"_blank\");' src='" + f.image + "' height='150px' /></div>" + "</div>"
+          violations.innerHTML = newRow + violations.innerHTML; 
+     }
+  },null);
+
+
+};
+</script>
+
+</head>
+<body><h1>Sound Violations</h1>
+<div id="violations">
+
+</div>
+</body></html>

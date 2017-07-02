@@ -39,8 +39,12 @@ body {
 
 </style>
 <body>
-<input type="button" value="<--" onclick="today.addDay(-1); load_data(); "/> <div id="title"></div><input type="button" value="-->" onclick="today.addDay(1); load_data(); "/>
-<div id="graph" style="float: left;"></div>
+<div style="position: absolute; top: 10px; left: 10px;">
+	<div style="float: left; margin-top: 10px; margin-right: 10px;"><input type="button" value="<--" onclick="d3.select('#sound_graph').remove(); today.setDate(today.getDate() - 1); load_data(); "/></div> 
+	<div style="float: left;" id="title"></div>
+	<div style="float: left; margin-top: 10px; margin-left: 10px;"><input type="button" value="-->" onclick="d3.select('#sound_graph').remove(); today.setDate(today.getDate() + 1); load_data(); "/></div>
+</div>
+<div id="graph" style="position: absolute; top: 50px; left: 10px;"></div>
 <div id="video_wrapper" style="position: fixed; top: 40px; left: 40px; padding: 10px; background-color: #CCC; border: 1px solid #999; border-radius: 5px; visibility: hidden;  font-size: 20px;">
 	<div id="desc" style="position: absolute; top: 0px; left: 10px;"></div>
 	<div id="close_vid" style="position: absolute; top: 0px; right: 10px; cursor: pointer; overflow: hidden; font-size: 16px;" onclick="video_wrapper.style.visibility = 'hidden';">close [x]</div>
@@ -54,16 +58,16 @@ body {
 <script src="http://d3js.org/d3.v3.js"></script>
 <script>
 
-document.load = function() {
+window.onload = function() {
 	load_data();
 };
-
+/*
 document.onmousedown = function() {
 	if(video_wrapper.style.visibility == 'visible') {
 		video_wrapper.style.visibility = 'hidden';
 	}
 };
-
+*/
 var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
@@ -138,8 +142,10 @@ var line = d3.svg.line()
     .x(function(d) { return x(d.Time); })
     .y(function(d) { return y(d.dBA); });
 	
+var svg;
 
 //var svg = d3.select("body").append("svg")
+/*
 var svg = d3.select("#graph").append("svg")
 	.attr("class", "graph")
     .attr("width", width + margin.left + margin.right)
@@ -148,7 +154,7 @@ var svg = d3.select("#graph").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-/*
+
 	d3.select('html').on('mousemove', function() {
     var xpos = d3.event.pageX;
     var rule = d3.select('body').selectAll('div.rule')
@@ -167,10 +173,18 @@ var today = new Date();
 
 function load_data() {
 
+  svg = d3.select("#graph").append("svg")
+	.attr("class", "graph")
+	.attr("id", "sound_graph")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	
 	var filename = pad((today.getMonth() + 1).toString(), 2, '0',STR_PAD_LEFT) + pad(today.getDate().toString(), 2, '0',STR_PAD_LEFT) + today.getFullYear() + ".tsv"; 
 	var video_filename = pad((today.getMonth() + 1).toString(), 2, '0',STR_PAD_LEFT) + pad(today.getDate().toString(), 2, '0',STR_PAD_LEFT) + today.getFullYear() + "_video.tsv"; 
 
-	title.innerHTML = "<h2>" + format_date(today) + "</h2>";	
+	title.innerHTML = "<h2>" + today.toDateString() + "</h2>";	
 	
 	d3.tsv(filename, function(error, data) {
 	  if(data == null) {
