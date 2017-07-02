@@ -106,7 +106,7 @@ function pad(str, len, pad, dir) {
  
 }
 
-var margin = {top: 20, right: 20, bottom: 30, left: 50},
+var margin = {top: 20, right: 20, bottom: 50, left: 50},
     width = window.innerWidth - margin.left - margin.right,
     height = window.innerHeight - margin.top - margin.bottom;
 
@@ -130,7 +130,7 @@ var yAxis = d3.svg.axis()
     .orient("left");
 
 var line = d3.svg.line()
-    .interpolate("cardinal")
+    .interpolate("linear")
     .x(function(d) { return x(d.Time); })
     .y(function(d) { return y(d.dBA); });
 	
@@ -166,7 +166,7 @@ function load_data() {
 		
 	  x.domain(d3.extent(data, function(d) { return d.Time; }));
 	  //y.domain(d3.extent(data, function(d) { return d.dBA; }));
-	  y.domain([d3.min(data, function(d) { return d.dBA; }),d3.max(data, function(d) { return d.dBA; })]);	
+	  y.domain([d3.min(data, function(d) { return d.dBA; }), Math.max(d3.max(data, function(d) { return d.dBA; }), 100)]);	
 
 	  svg.append("linearGradient")
 		  .attr("id", "temperature-gradient")
