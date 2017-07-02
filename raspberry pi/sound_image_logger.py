@@ -20,7 +20,7 @@ last_recording = datetime.now()
 last_sample = datetime.now()
 recording_id = ""
 max_val = 0
-
+capture_threshold = 750
 
 def ByteToHex( byteStr ):
   return ''.join( [ "%02X" % x for x in byteStr ] ).strip()
@@ -44,6 +44,7 @@ def InitDevice( ):
 
 
 def WriteData( val ):
+    global last_recording
     global recording_id
     global last_sample
 
@@ -61,7 +62,7 @@ def WriteData( val ):
     
     cap_str = ""
 
-    if(val > 800):
+    if(val > capture_threshold and (datetime.now() - last_recording) > timedelta(seconds=5)):
       cap_str = recording_id
       CaptureImage(dirpath)
 
@@ -87,7 +88,7 @@ def CaptureImage(dirpath):
   if((datetime.now() - last_recording) < timedelta(seconds=5)):
     return
     
-  call("sudo raspistill -t 5000 -tl 1000 -q 75 -w 640 -h 480 -o " + dirpath + "/img/" + recording_id + "_%d.jpg -n", shell=True)
+  call("sudo raspistill -t 5000 -tl 1000 -q 75 -w 640 -h 480 -o " + dirpath + "/" + recording_id + "_%d.jpg -n", shell=True)
   last_recording = datetime.now()
   
   return
@@ -134,8 +135,8 @@ while 1:
   if(val > max_val):
     max_val = val
 
-  if(val > 800):
-    writeData(val)
+  if(val > capture_threshold):
+    WriteData(val)
 
   if((datetime.now() - last_sample) > timedelta(seconds=10)):
     WriteData(max_val)

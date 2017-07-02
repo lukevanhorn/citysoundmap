@@ -244,7 +244,7 @@ function add_marker(d) {
 			if(d.info != "") {
 			    desc.innerHTML = d.dBA + " dB(A) <br />" + format_date(d.Time);
 				image_wrapper.style.visibility = 'visible';
-				photo.src = dirpath + "/img/" + d.info + "_1.jpg";
+				photo.src = dirpath + "/" + d.info + "_1.jpg";
 			}
 			event.returnValue= false;
 			return false;
