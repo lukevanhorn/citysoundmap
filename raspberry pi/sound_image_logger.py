@@ -86,7 +86,7 @@ def CaptureImage(dirpath):
   if((datetime.now() - last_recording) < timedelta(seconds=5)):
     return
     
-  call("sudo raspistill -t 5000 -tl 1000 -q 75 -w 640 -h 480 -o " dirpath + "/img/" + recording_id + "_%d.jpg -n", shell=True)
+  call("sudo raspistill -t 5000 -tl 1000 -q 75 -w 640 -h 480 -o " + dirpath + "/img/" + recording_id + "_%d.jpg -n", shell=True)
   last_recording = datetime.now()
   
   return
