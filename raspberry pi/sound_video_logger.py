@@ -18,6 +18,8 @@ running_mean = 0.0
 samples = 0
 last_recording = datetime.now()
 recording_id = ""
+max_val = 0
+min_val = 300
 
 
 def ByteToHex( byteStr ):
@@ -41,17 +43,27 @@ def InitDevice( ):
   return True
 
 
-def WriteData( val_str ):
+def WriteData():
     global recording_id
+    global min_val
+    global max_val
     
-    filename = strftime("/var/www/data/%m%d%Y.tsv", time.localtime())
+    #max value
+    tmp_str = '%d' % max_val
+    max_str = tmp_str[:-1] + '.' + tmp_str[-1:]
+    
+    #min value
+    tmp_str = '%d' % min_val
+    min_str = tmp_str[:-1] + '.' + tmp_str[-1:]
+    
+    filename = strftime("/var/www/%m%d%Y.tsv", time.localtime())
     if(os.path.exists(filename) == False):
       with open(filename, 'a+') as f:
         f.write("Time\tdBA\tinfo\n")
 
     with open(filename, 'a+') as f:
       timestamp = strftime("%m-%d-%Y %H:%M:%S", time.localtime())
-      f.write(timestamp + "\t" + val_str + "\t" + recording_id + "\n")
+      f.write(timestamp + "\t" + max_str + "\t" + recording_id + "\n")
 
     return
     
@@ -115,33 +127,44 @@ while 1:
 
   # Level
   factor = (result[0] & ((1 << 5) | (1 << 4))) >> 4
-  sys.stdout.write('Level: %d ' % (40 + (int(bin(factor), 2) * 20)))
+  # sys.stdout.write('Level: %d ' % (40 + (int(bin(factor), 2) * 20)))
 
   # Value
   val = ((result[0] & 0x7) << 8) | result[1]
-  tmp_str = '%d' % val
-  val_str = tmp_str[:-1] + '.' + tmp_str[-1:]
+  #tmp_str = '%d' % val
+  #val_str = tmp_str[:-1] + '.' + tmp_str[-1:]
   
-  running_mean = (((running_mean * samples) + val) / (samples + 1))
-  if(samples < 100):
-    samples += 1
-  
-  if((datetime.now() - last_recording) > timedelta(seconds=5)):
-    recording_id = ""
-  
-  if((float(val) / running_mean) > 1.25):
-    if(val > 700):
-      CaptureVideo()
-
-  sys.stdout.write(str(val) + " dB CH: " + str(float(val) / previous_val) + " RM: " + str(float(val) / running_mean) + "\r")
-  sys.stdout.flush()
-  
-  if(.80 < (float(val) / previous_val) < 1.2):
-    continue
+  if(val > max_val):
+    max_val = val
     
-  WriteData(val_str)
+  if(val < min_val):
+    min_val = val
   
-  previous_val = val;
+  #running_mean = (((running_mean * samples) + val) / (samples + 1))
+  #if(samples < 100):
+  #  samples += 1
+  
+  #writeFlag = False
+  
+  if((datetime.now() - last_recording) > timedelta(seconds=10)):
+    WriteData()
+    last_recording = datetime.now()
+    min_val = 300
+    max_val = 0    
+  
+  #ratio = (float(val) / previous_val)
+  
+  #if((ratio < .8) or  (ratio > 1.2)):
+  #  writeFlag = True
+    
+  #if(val > 750):
+  #  writeFlag = True  
+  
+  #if(writeFlag == True):
+  #  WriteData()
+  
+  previous_val = val
+  #last_recording = datetime.now()
   
 s.close()
 
