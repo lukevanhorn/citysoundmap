@@ -43,7 +43,7 @@ The Raspberry Pi can also host a simple web interface to view the data.  Install
 <br/><br/>
 Demo: <a href="http://www.citysoundmap.org/demo.html">http://www.citysoundmap.org/demo.html</a> (data collected in Moab, UT August 2013).
 <br/><br/>
-Photos: <a href="http://www.citysoundmap.org/demo.html">http://www.citysoundmap.org</a>
+Photos: <a href="http://www.citysoundmap.org/">http://www.citysoundmap.org</a>
 </p>
 <p>
 <table>
