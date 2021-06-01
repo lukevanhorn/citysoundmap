@@ -41,9 +41,9 @@ The Raspberry Pi can also host a simple web interface to view the data.  Install
 <br/><br/>
 **note: The Pi user will need write permissions for the data, video and img directories in /var/www
 <br/><br/>
-Demo: <a href="http://www.citysoundmap.org/demo.html">http://www.citysoundmap.org/demo.html</a> (data collected in Moab, UT August 2013).
+Demo: <a href="https://www.citysoundmap.com/example.html">https://www.citysoundmap.com/example.html</a> (data collected in Moab, UT August 2013).
 <br/><br/>
-Photos: <a href="http://www.citysoundmap.org/">http://www.citysoundmap.org</a>
+Photos: <a href="https://www.citysoundmap.com/">http://www.citysoundmap.com</a>
 </p>
 <p>
 <table>
